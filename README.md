@@ -1,12 +1,12 @@
-# 🚗 CarLog Pro - Gestión Integral de Vehículos
+# 🚗 CarTracker - Gestión Integral de Vehículos
 
-CarLog Pro es una aplicación **full stack** diseñada para centralizar toda la información relacionada con uno o varios vehículos en una sola plataforma.
+CarTracker es una aplicación **full stack** diseñada para centralizar toda la información relacionada con uno o varios vehículos en una sola plataforma.
 
 Permite registrar gastos, mantenimientos, repostajes, averías, modificaciones, documentación e historiales avanzados, convirtiéndose en un auténtico libro digital del vehículo. Su objetivo es ofrecer una visión completa del coste real de propiedad de cada coche y facilitar el seguimiento de su mantenimiento y evolución a lo largo del tiempo.
 
 ## 📋 Objetivo
 
-CarLog Pro nace para que cualquier usuario pueda:
+CarTracker nace para que cualquier usuario pueda:
 
 - Gestionar múltiples vehículos desde una misma cuenta.
 - Registrar todos los gastos asociados a cada coche.
@@ -89,7 +89,7 @@ Acciones disponibles:
 
 ### Gestión de gastos
 
-CarLog Pro organiza los costes por categorías como:
+CarTracker organiza los costes por categorías como:
 
 - Mantenimientos.
 - Tuning y modificaciones.
