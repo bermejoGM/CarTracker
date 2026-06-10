@@ -1,13 +1,13 @@
-package es.cartracker_backend;
+package es.backend_spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CarTrackerBackendApplication {
+public class BackendSpringApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CarTrackerBackendApplication.class, args);
+        SpringApplication.run(BackendSpringApplication.class, args);
     }
 
 }

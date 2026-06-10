@@ -39,7 +39,7 @@ CarTracker nace para que cualquier usuario pueda:
 
 ### Base de datos
 
-- MongoDB Atlas
+- PostgreSQL
 
 ### Almacenamiento de archivos
 
