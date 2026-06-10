@@ -366,13 +366,6 @@ Importación CSV de:
 - Informe profesional.
 - Historial resumido.
 
-### Fase 10 - Optimización
-
-- Notificaciones.
-- PWA.
-- Docker.
-- CI/CD.
-
 ## 🔮 Mejoras Futuras
 
 - Aplicación móvil Flutter.
