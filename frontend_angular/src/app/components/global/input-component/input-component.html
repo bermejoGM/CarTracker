@@ -1,0 +1,10 @@
+<section class="field-group" [class.is-error]="invalid" [class.is-success]="valid">
+  <label [for]="inputId">{{ label }}</label>
+  <input
+    [id]="inputId"
+    [type]="type"
+    [placeholder]="placeholder"
+    [formControl]="control"
+    [autocomplete]="autocomplete" />
+  <small class="field-hint">{{ feedbackMessage }}</small>
+</section>

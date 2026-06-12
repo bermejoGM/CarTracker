@@ -1,0 +1,47 @@
+<section class="auth-page" aria-label="Registro de usuario">
+  <article class="auth-card">
+    <header class="auth-header">
+      <p class="eyebrow">Crear cuenta</p>
+      <h2>Empieza en segundos</h2>
+      <p>Accede a una experiencia premium diseñada para gestión automotriz avanzada.</p>
+    </header>
+
+    <form class="auth-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+      <app-input label="Nombre completo" type="text" placeholder="Tu nombre" autocomplete="name"
+        [control]="registerForm.controls.name" inputId="name">
+      </app-input>
+
+      <app-input label="Correo electrónico" type="email" placeholder="nombre@empresa.com" autocomplete="email"
+        [control]="registerForm.controls.email" inputId="email">
+      </app-input>
+
+      <app-password-input label="Contraseña" placeholder="Crea una contraseña segura"
+        [control]="registerForm.controls.password" inputId="password">
+      </app-password-input>
+
+      <app-password-input label="Confirmar contraseña" placeholder="Repite la contraseña"
+        [control]="registerForm.controls.confirmPassword" inputId="confirmPassword">
+      </app-password-input>
+
+      <p class="field-error" *ngIf="passwordMismatch">
+        Las contraseñas no coinciden.
+      </p>
+
+      <div class="terms-block">
+        <app-checkbox [control]="registerForm.controls.terms">
+          Acepto los términos y la política de privacidad.
+        </app-checkbox>
+      </div>
+
+      <div class="submit-block">
+        <app-button type="submit" variant="primary" [disabled]="registerForm.invalid || loading">
+          {{ loading ? 'Creando...' : 'Crear cuenta' }}
+        </app-button>
+      </div>
+      <div class="auth-switch">
+        ¿Ya tienes cuenta?
+        <a routerLink="/login">Iniciar sesión</a>
+      </div>
+    </form>
+  </article>
+</section>
