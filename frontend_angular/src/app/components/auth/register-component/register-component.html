@@ -7,11 +7,20 @@
     </header>
 
     <form class="auth-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
-      <app-input label="Nombre completo" type="text" placeholder="Tu nombre" autocomplete="name"
+
+      @if (errorMessage) {
+      <p class="field-error">{{ errorMessage }}</p>
+      }
+
+      @if (successMessage) {
+      <p class="field-success">{{ successMessage }}</p>
+      }
+
+      <app-input label="Nombre de usuario" type="text" placeholder="Usuario" autocomplete="name"
         [control]="registerForm.controls.name" inputId="name">
       </app-input>
 
-      <app-input label="Correo electrónico" type="email" placeholder="nombre@empresa.com" autocomplete="email"
+      <app-input label="Correo electrónico" type="email" placeholder="nombre@dominio.com" autocomplete="email"
         [control]="registerForm.controls.email" inputId="email">
       </app-input>
 
@@ -23,9 +32,11 @@
         [control]="registerForm.controls.confirmPassword" inputId="confirmPassword">
       </app-password-input>
 
-      <p class="field-error" *ngIf="passwordMismatch">
+      @if (passwordMismatch) {
+      <p class="field-error">
         Las contraseñas no coinciden.
       </p>
+      }
 
       <div class="terms-block">
         <app-checkbox [control]="registerForm.controls.terms">
