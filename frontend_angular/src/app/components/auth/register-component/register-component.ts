@@ -1,4 +1,4 @@
-import { Component, inject, ViewChild } from '@angular/core';
+import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   ReactiveFormsModule,
@@ -14,6 +14,7 @@ import { PasswordInputComponent } from '../../global/password-input-component/pa
 import { CheckboxComponent } from '../../global/checkbox-component/checkbox-component';
 import { ButtonComponent } from '../../global/button-component/button-component';
 import { AuthService } from '../../../services/auth.service';
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -29,13 +30,14 @@ import { AuthService } from '../../../services/auth.service';
   templateUrl: './register-component.html',
   styleUrls: ['./register-component.css'],
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
   loading = false;
   successMessage = '';
   errorMessage = '';
 
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
+  private title = inject(Title);
 
   registerForm = this.fb.group(
     {
@@ -106,15 +108,14 @@ export class RegisterComponent {
           if (error?.status === 409) {
             const backendMessage = error?.error?.message?.toLowerCase?.() ?? '';
 
-            if (backendMessage.includes('username') ||
+            if (
+              backendMessage.includes('username') ||
               backendMessage.includes('nombre de usuario')
             ) {
               this.errorMessage = 'Nombre de usuario en uso.';
-            }
-             else {
+            } else {
               this.errorMessage = 'El correo electrónico ya está registrado.';
             }
-
           } else {
             this.errorMessage = 'Ha habido un error. Inténtalo de nuevo.';
           }
@@ -130,5 +131,9 @@ export class RegisterComponent {
           this.loading = false;
         },
       });
+  }
+
+  ngOnInit(): void {
+    this.title.setTitle('Crear Cuenta');
   }
 }

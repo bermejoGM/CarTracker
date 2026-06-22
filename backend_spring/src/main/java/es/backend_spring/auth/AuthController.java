@@ -1,6 +1,7 @@
 package es.backend_spring.auth;
 
 import es.backend_spring.auth.dto.AuthResponse;
+import es.backend_spring.auth.dto.LoginRequest;
 import es.backend_spring.auth.dto.RegisterRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -24,5 +25,11 @@ public class AuthController {
     @Operation(summary = "Registro de Usuario")
     public ResponseEntity<AuthResponse> register(@Valid @RequestBody RegisterRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(authService.register(request));
+    }
+
+    @PostMapping("/login")
+    @Operation(summary = "Inicio de Sesion")
+    public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest request) {
+        return ResponseEntity.ok(authService.login(request));
     }
 }

@@ -1,6 +1,7 @@
 package es.backend_spring.auth;
 
 import es.backend_spring.auth.dto.AuthResponse;
+import es.backend_spring.auth.dto.LoginRequest;
 import es.backend_spring.auth.dto.RegisterRequest;
 import es.backend_spring.security.JwtService;
 import es.backend_spring.security.RefreshToken;
@@ -44,6 +45,22 @@ public class AuthService {
                 .build();
 
         userRepository.save(user);
+
+        String accessToken = jwtService.generateAccessToken(user);
+        String refreshToken = createRefreshToken(user);
+
+        return new AuthResponse(accessToken, refreshToken, user.getNombre(), user.getEmail());
+    }
+
+    @Transactional
+    public AuthResponse login(LoginRequest request) {
+        String identifier = request.identifier().trim();
+
+        User user = userRepository.findByNombreOrEmail(identifier, identifier).orElseThrow(()-> new InvalidCredentialsException("Datos invalidos"));
+
+        if (!passwordEncoder.matches(request.password(), user.getPassword())){
+            throw new InvalidCredentialsException("Datos invalidos");
+        }
 
         String accessToken = jwtService.generateAccessToken(user);
         String refreshToken = createRefreshToken(user);

@@ -1,0 +1,54 @@
+<section class="auth-page" aria-label="Inicio de sesión">
+  <article class="auth-card">
+    <header class="auth-header">
+      <p class="eyebrow">Iniciar sesión</p>
+      <h2>Accede a tu cuenta</h2>
+      <p>Entra en tu panel para gestionar vehículos, gastos, repostajes y mantenimiento.</p>
+    </header>
+
+    <form class="auth-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+      @if (errorMessage) {
+      <p class="field-error">{{ errorMessage }}</p>
+      }
+
+      @if (successMessage) {
+      <p class="field-success">{{ successMessage }}</p>
+      }
+
+      <app-input
+        label="Nombre de usuario o correo electrónico"
+        type="text"
+        placeholder="usuario o nombre@dominio.com"
+        autocomplete="username"
+        [control]="loginForm.controls.identifier"
+        inputId="identifier"
+      >
+      </app-input>
+
+      <app-password-input
+        label="Contraseña"
+        placeholder="Introduce tu contraseña"
+        [control]="loginForm.controls.password"
+        inputId="password"
+      >
+      </app-password-input>
+
+      <div class="remember-block">
+        <app-checkbox [control]="loginForm.controls.remember">
+          Recuérdame en este dispositivo.
+        </app-checkbox>
+      </div>
+
+      <div class="submit-block">
+        <app-button type="submit" variant="primary" [disabled]="loginForm.invalid || loading">
+          {{ loading ? 'Entrando...' : 'Iniciar sesión' }}
+        </app-button>
+      </div>
+
+      <div class="auth-switch">
+        ¿No tienes cuenta?
+        <a routerLink="/register">Crear cuenta</a>
+      </div>
+    </form>
+  </article>
+</section>

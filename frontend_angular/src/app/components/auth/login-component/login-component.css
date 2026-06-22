@@ -25,6 +25,12 @@
   font-family: var(--font-main);
 }
 
+.auth-card {
+  width: min(100%, 460px);
+  padding: 36px;
+  backdrop-filter: blur(14px);
+}
+
 .auth-header {
   display: grid;
   gap: 10px;
@@ -45,24 +51,6 @@
   font-size: 0.98rem;
 }
 
-.auth-switch {
-  margin-top: 2px;
-  font-size: 0.95rem;
-  color: var(--text);
-}
-
-.auth-switch a {
-  color: var(--accent-color);
-  font-weight: 600;
-  text-decoration: none;
-  margin-left: 4px;
-}
-
-.auth-switch a:hover {
-  color: var(--accent-hover);
-  text-decoration: underline;
-}
-
 .eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.14em;
@@ -81,8 +69,13 @@
   min-height: 18px;
 }
 
-/* Más separación antes del botón */
-.terms-block {
+.field-success {
+  color: #15803d;
+  font-size: 0.85rem;
+  min-height: 18px;
+}
+
+.remember-block {
   margin-top: 8px;
   margin-bottom: 12px;
 }
@@ -92,19 +85,34 @@
   width: 100%;
 }
 
-/* Mejorar el componente password visualmente */
-app-password-input {
-  display: block;
+.auth-switch {
+  margin-top: 2px;
+  font-size: 0.95rem;
+  color: var(--text);
+}
 
-  .auth-card {
-    width: min(100%, 460px);
-    background: rgba(255, 255, 255, 0.92);
-    border: 1px solid rgba(17, 17, 17, 0.06);
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow);
-    padding: 36px;
-    backdrop-filter: blur(14px);
-  }
+.auth-switch a {
+  color: var(--accent-color);
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 4px;
+}
+
+.auth-switch a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+app-input,
+app-password-input,
+app-checkbox,
+app-button {
+  display: block;
+}
+
+app-input,
+app-password-input {
+  width: 100%;
 }
 
 app-password-input .field-group {

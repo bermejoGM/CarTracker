@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -38,7 +38,7 @@ public class User implements UserDetails {
 
     // Ejecuta este metodo justo antes de insertar el registro en la base de datos.
     @PrePersist
-    protected void onCreate(){
+    protected void onCreate() {
         this.createdAt = LocalDateTime.now();
     }
 
@@ -75,6 +75,6 @@ public class User implements UserDetails {
 
     @Override
     public String getPassword() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.password;
     }
 }
