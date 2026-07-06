@@ -30,11 +30,11 @@ public class AuthService {
 
     @Transactional
     public AuthResponse register(RegisterRequest request) {
-        if (userRepository.existsByEmail(request.email())){
+        if (userRepository.existsByEmail(request.email())) {
             throw new EmailAlreadyExistsException("Datos invalidos");
         }
 
-        if (userRepository.existsByNombre(request.nombre())){
+        if (userRepository.existsByNombre(request.nombre())) {
             throw new NombreAlreadyExistsException("El nombre de usuario ya está en uso");
         }
 
@@ -56,9 +56,9 @@ public class AuthService {
     public AuthResponse login(LoginRequest request) {
         String identifier = request.identifier().trim();
 
-        User user = userRepository.findByNombreOrEmail(identifier, identifier).orElseThrow(()-> new InvalidCredentialsException("Datos invalidos"));
+        User user = userRepository.findByNombreOrEmail(identifier, identifier).orElseThrow(() -> new InvalidCredentialsException("Datos invalidos"));
 
-        if (!passwordEncoder.matches(request.password(), user.getPassword())){
+        if (!passwordEncoder.matches(request.password(), user.getPassword())) {
             throw new InvalidCredentialsException("Datos invalidos");
         }
 
@@ -69,7 +69,7 @@ public class AuthService {
     }
 
     private String createRefreshToken(User user) {
-        String tokenValue =  UUID.randomUUID().toString();
+        String tokenValue = UUID.randomUUID().toString();
         RefreshToken refreshToken = RefreshToken.builder()
                 .user(user)
                 .token(tokenValue)

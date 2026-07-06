@@ -1,0 +1,84 @@
+<nav class="sidebar__nav" aria-label="Navegación principal">
+    <ul class="sidebar__list">
+        @for (item of menuItems; track item.link) {
+        <li class="sidebar__item">
+            <a class="sidebar__link" [routerLink]="item.link" routerLinkActive="is-active"
+                [routerLinkActiveOptions]="{ exact: !!item.exact }"
+                [attr.aria-current]="isActive(item.link, !!item.exact) ? 'page' : null" (click)="onLinkClick()"
+                role="menuitem">
+                <span class="sidebar__icon" aria-hidden="true">
+                    @switch (item.icon) {
+                    @case ('dashboard') {
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7" rx="2"></rect>
+                        <rect x="14" y="3" width="7" height="7" rx="2"></rect>
+                        <rect x="3" y="14" width="7" height="7" rx="2"></rect>
+                        <rect x="14" y="14" width="7" height="7" rx="2"></rect>
+                    </svg>
+                    }
+
+                    @case ('vehicles') {
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 13h18"></path>
+                        <path d="M5 13V8h14v5"></path>
+                        <path d="M6 13l1 5h10l1-5"></path>
+                    </svg>
+                    }
+
+                    @case ('expenses') {
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 1v22"></path>
+                        <path d="M17 5.5A5 5 0 0 0 13 4h-2a4 4 0 0 0 0 8h2a4 4 0 0 1 0 8h-2a5 5 0 0 1-4-1.5"></path>
+                    </svg>
+                    }
+
+                    @case ('fuel') {
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 20h16"></path>
+                        <path d="M7 20V9l5-4 5 4v11"></path>
+                        <path d="M9 20v-6h6v6"></path>
+                    </svg>
+                    }
+
+                    @case ('maintenance') {
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 3l7 7-11 11H3v-7L14 3z"></path>
+                    </svg>
+                    }
+
+                    @case ('breakdowns') {
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 3L2 17h20L14 3h-4z"></path>
+                    </svg>
+                    }
+
+                    @case ('documents') {
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 8v13H3V3h13"></path>
+                        <path d="M14 3v5h5"></path>
+                    </svg>
+                    }
+
+                    @case ('analytics') {
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 19V5"></path>
+                        <path d="M4 19h16"></path>
+                        <path d="M7 15l3-4 3 2 4-6"></path>
+                    </svg>
+                    }
+
+                    @case ('sales') {
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 7h18"></path>
+                        <path d="M6 7v14h12V7"></path>
+                        <path d="M9 7V4h6v3"></path>
+                    </svg>
+                    }
+                    }
+                </span>
+                <span class="sidebar__label">{{ item.label }}</span>
+            </a>
+        </li>
+        }
+    </ul>
+</nav>
